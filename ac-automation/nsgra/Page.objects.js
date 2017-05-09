@@ -1,11 +1,15 @@
-
 "use strict";
+
 class Page {
-  constructor(){}
-  open(path) {
-    browser.url('/' + path);
-  }
+  constructor(open){
+  	this.open = (path) => {browser.url('/' + path)};
+  }
+
+
+//   open(path) {
+//     browser.url('/' + path);
+//   }
 }
 
-module.exports = new Page();
+module.exports = Page;
 
