@@ -1,0 +1,11 @@
+{
+  "login" : {
+    "header": "",
+    "banner": "",
+    "form": {
+      "username": "",
+      "password": "",
+      "submit": ""
+    }
+  }
+}
