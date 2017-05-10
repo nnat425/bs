@@ -3,7 +3,7 @@
 
 class Page {
   constructor( ) {
-    this.open = ( path ) => { browser.url( '/' + path ) };
+    this.open = ( path ) => { browser.url( path ) };
   }
 }
 

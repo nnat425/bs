@@ -1,11 +1,34 @@
 {
-  "login" : {
-    "header": "",
-    "banner": "",
-    "form": {
-      "username": "",
-      "password": "",
-      "submit": ""
-    }
-  }
+	"login": {
+		"header": {
+			"id": "#topNav",
+			"links": {
+				"home": "div[id='scholasticLogo']/a"
+			}
+		},
+		"footer": {
+			"id": "#footercontainer",
+			"links": {
+				"privacyPolicy": "div[id='footercontainer']/div/a[text()='PRIVACY POLICY']",
+				"termsOfUse": "div[id='footercontainer']/div/a[text()='Terms of Use']"
+			}
+		},
+		"banner": "#navigation",
+		"clever": {
+			"id": "#loginWithCleverDiv",
+			"link": "#loginWithCleverLink"
+		},
+		"form": {
+			"id": "#loginContainer",
+			"username": ".usernamefield",
+			"password": "#loginPasswordInput",
+			"submit": "#loginButton",
+			"links": {
+				"needHelp": "#helpAndResourcesLink",
+				"forgotPassword": "#forgotAccIntoLink#",
+				"register": "#createAccountLink",
+				"loginAsStudent": ".teacherRedirectLink"
+			}
+		}
+	}
 }

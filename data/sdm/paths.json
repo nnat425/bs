@@ -1,0 +1,6 @@
+{
+	"login": {
+		"student": "/#/signin",
+		"staff": "/#/signin/staff"
+	}
+}
