@@ -1,15 +1,27 @@
-/*global browser */
 'use strict';
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var goTo = require('../definitions/common/goTo.definition');
+var fillInWith = require('../definitions/common/fillInWith.definition');
+var press = require('../definitions/common/press.definition');
+var assertTextInElement = require('../definitions/common/assertTextInElement.definition');
 
-var Page = function Page() {
-  _classCallCheck(this, Page);
+function Page() {}
 
-  this.open = function (path) {
-    browser.url('/' + path);
-  };
+Page.prototype.open = function open(path) {
+  goTo(path);
 };
 
-module.exports = Page;
+Page.prototype.fillInWith = function fillIn(element, value) {
+  fillInWith(element, value);
+};
+
+Page.prototype.press = function pressButton(element) {
+  press(element);
+};
+
+Page.prototype.assertTextInElement = function textInElement(element, value) {
+  assertTextInElement(element, value);
+};
+
+module.exports = new Page();
 //# sourceMappingURL=page.js.map

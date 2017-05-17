@@ -1,0 +1,23 @@
+{
+	"student": {
+    "myClass": {
+      "selector": "h2=My Class"
+    },
+    "assess": {
+      "selector": "h2=Assess"
+    },
+    "decide": {
+      "selector": "h2=Decide",
+      "classProgressReport": {
+        "reportDetail": {
+          "exportInformationText": {
+            "selector": "#expTxt > ul > li"
+          }
+        }
+      }
+    },
+    "guide": {
+      "selector": "h2=Guide"
+    }
+	}
+}

@@ -1,12 +1,13 @@
-/*global describe, expect, it, beforeEach*/
-const SDMLoginPage = require( '../../dist/common_objects/sdm.page' );
-const environment = require( '../../config/dev/environment' );
+/*global browser, describe, it, beforeEach*/
+const SDMPage = require( '../../dist/common_objects/sdm.page' );
 
-describe( 'SDM:login', () => {
-
-  it( 'logs in with valid credentials', () => {
-    SDMLoginPage.open( environment.sdm.student );
-	browser.debug();
+describe( 'SDM', () => {
+  it( 'navigates to log in', () => {
+    SDMPage.open( 'student' );
+    browser.pause( 1500 )
   } );
-
+  it( 'fills in and submits log in form with valid credentials', () => {
+    SDMPage.login( 'student' );
+    browser.pause( 1500 )
+  } );
 } );

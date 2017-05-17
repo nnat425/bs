@@ -6,6 +6,7 @@
 test/actual
 actual
 coverage
+visual/**/**.png
 
 # npm
 node_modules

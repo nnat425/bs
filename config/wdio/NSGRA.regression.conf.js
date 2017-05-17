@@ -1,3 +1,5 @@
+require( '../../index' );
+
 exports.config = {
 
     //
@@ -10,7 +12,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './test/specs/*.spec.js'
+        './test/specs/NSGRA.spec.js',
     ],
     // Patterns to exclude.
     exclude: [
@@ -119,12 +121,14 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/testrunner/reporters.html
-    // reporters: ['dot'],
+    reporters: ['dot'],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
-        ui: 'bdd'
+        ui: 'bdd',
+        timeout: '999999999'
+
     },
     //
     // =====

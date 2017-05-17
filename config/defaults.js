@@ -5,7 +5,7 @@ const https = 'https://';
 const defaults = {
 	http: http,
 	https: https,
-	base: 'scholastic-labs.io' 
+	base: 'scholastic-labs.io'
 };
 
 exports.defaults = defaults;
