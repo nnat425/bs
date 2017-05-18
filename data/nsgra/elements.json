@@ -4,7 +4,14 @@
       "selector": "h2=My Class"
     },
     "assess": {
-      "selector": "h2=Assess"
+      "selector": "h2=Assess",
+      "classProgressReport": {
+        "reportDetail": {
+          "exportInformationText": {
+            "selector": "#expTxt > ul > li"
+          }
+        }
+      }
     },
     "decide": {
       "selector": "h2=Decide",
