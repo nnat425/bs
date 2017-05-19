@@ -9,7 +9,7 @@ var NSGRAPage = Object.create(page, {
   // define functions
   open: {
     value: function value() {
-      page.open.call(this, NSGRAPaths.appHome);
+      page.open.call(undefined, NSGRAPaths.appHome);
     }
   },
   assertURL: {
@@ -19,23 +19,23 @@ var NSGRAPage = Object.create(page, {
     }
   },
   decide: {
-    value: function value(type) {
-      page.press.call(this, NSGRAElements[type].decide.selector);
+    value: function value() {
+      page.press.call(undefined, NSGRAElements.decide.selector);
     }
   },
   assess: {
-    value: function value(type) {
-      page.press.call(this, NSGRAElements[type].assess.selector);
+    value: function value() {
+      page.press.call(undefined, NSGRAElements.assess.selector);
     }
   },
-  openReport: {
+  decideReport: {
     value: function value(step, report) {
       var parentElement = '//h2[text()="' + step + '"]/following-sibling::div/div/a[text()="' + report + '"]';
 
-      page.press.call(this, parentElement);
+      page.press.call(undefined, parentElement);
     }
   },
-  openStep: {
+  assessStep: {
     value: function value(step, report) {
       var parentElement = '//h3/span[text()="' + step + '"]';
 
@@ -43,7 +43,7 @@ var NSGRAPage = Object.create(page, {
     }
   },
   confirmExportInformationText: {
-    value: function value(userType, step, report) {
+    value: function value(step, report) {
       var exportInformationText = void 0;
 
       switch (step) {
@@ -57,7 +57,7 @@ var NSGRAPage = Object.create(page, {
           break;
       }
 
-      page.assertTextInElement.call(this, NSGRAElements.student.assess.classProgressReport.reportDetail.exportInformationText.selector, exportInformationText);
+      page.assertTextInElement.call(undefined, NSGRAElements.assess.report.detail.information.selector, exportInformationText);
     }
   }
 });

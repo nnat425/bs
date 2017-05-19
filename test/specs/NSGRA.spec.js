@@ -3,92 +3,78 @@ const SDMPage = require( '../../dist/common_objects/sdm.page' );
 const NSGRAPage = require( '../../dist/page_objects/nsgra.page' );
 const appName = 'Next Step Guided Reading: K-2';
 
-describe( 'SDM', () => {
-  it( 'navigates to log in', () => {
-    SDMPage.open( 'student' );
-    browser.pause( 1500 );
-  } );
-  it( 'fills in and submits log in form with valid credentials', () => {
-    SDMPage.login( 'student' );
-    browser.pause( 1500 );
-  } );
-} );
+// SDM Log In
+require( './SDMLogin.spec.js' )
 
 describe( 'NSGRA', () => {
+  let report;
+
   it( 'opens application', () => {
     SDMPage.selectApplication( appName );
-    browser.pause( 1500 );
+    browser.pause( 500 );
   } );
   it( 'asserts page url', () => {
     NSGRAPage.assertURL();
   } );
-  it.skip( 'navigates to decide', () => {
-    NSGRAPage.decide( 'student' );
-  } );
-  describe( 'Step 2', () => {
+  describe( 'Decide', () => {
     const step = 'Step 2: Developmental Word Knowledge Inventory (DWKI)';
-    let report;
 
-    it.skip( 'opens class progress report', () => {
+    it( 'navigates to decide', () => {
+      NSGRAPage.decide();
+      browser.pause( 500 );
+    } );
+
+    it( 'opens class progress report and verifies text changes as per GDAIS-1489', () => {
       report = 'Class Progress Report';
 
-      NSGRAPage.openReport( step, report );
-      browser.pause( 1500 );
+      NSGRAPage.decideReport( step, report );
+      browser.pause( 500 );
+      NSGRAPage.confirmExportInformationText( step, report );
+      browser.pause( 500 );
     } );
-    it.skip( 'verifies text changes as per GDAIS-1489', () => {
-      report = 'Class Progress Report';
-
-      NSGRAPage.confirmExportInformationText( 'student', step, report );
-    } );
-    it.skip( 'navigates to decide', () => {
+    it( 'navigates to decide', () => {
       NSGRAPage.open();
-      NSGRAPage.decide( 'student' );
+      browser.pause( 500 );
+      NSGRAPage.decide();
+      browser.pause( 500 );
     } );
-    it.skip( 'opens group report', () => {
+    it( 'opens group report and verifies text changes as per GDAIS-1489', () => {
       report = 'Group Report';
 
-      browser.pause( 1500 );
-      NSGRAPage.openReport( step, report );
+      NSGRAPage.decideReport( step, report );
+      browser.pause( 500 );
+      NSGRAPage.confirmExportInformationText( step, report );
+      browser.pause( 500 );
     } );
-    it.skip( 'verifies text changes as per GDAIS-1489', () => {
-      report = 'Group Report';
-
-      NSGRAPage.confirmExportInformationText( 'student', step, report );
-    } );
-    it.skip( 'navigates to decide', () => {
+    it( 'navigates to decide', () => {
       NSGRAPage.open();
-      NSGRAPage.decide( 'student' );
+      browser.pause( 500 );
+      NSGRAPage.decide();
+      browser.pause( 500 );
     } );
-    it.skip( 'opens student progress report', () => {
+    it( 'opens student progress report and verifies text changes as per GDAIS-1489', () => {
       report = 'Student Progress Report';
 
-      browser.pause( 1500 );
-      NSGRAPage.openReport( step, report );
+      NSGRAPage.decideReport( step, report );
+      browser.pause( 500 );
+      NSGRAPage.confirmExportInformationText( step, report );
+      browser.pause( 500 );
     } );
-    it.skip( 'verifies text changes as per GDAIS-1489', () => {
-      report = 'Student Progress Report';
-
-      NSGRAPage.confirmExportInformationText( 'student', step, report );
-    } );
+  } );
+  describe( 'Assess', () => {
+    const step = 'Step 2';
 
     it( 'navigates to assess', () => {
-      NSGRAPage.assess( 'student' );
+      NSGRAPage.open();
+      browser.pause( 500 );
+      NSGRAPage.assess();
+      browser.pause( 500 );
     } );
-    describe( 'Step 2', () => {
-      const step = 'Step 2';
-
-      it( 'open step 2', () => {
-        NSGRAPage.openStep( step );
-      } );
-      it( 'verifies text changes as per GDAIS-1489', () => {
-
-      NSGRAPage.confirmExportInformationText( 'student', step );
+    it( 'open step 2 and verifies text changes as per GDAIS-1489', () => {
+      NSGRAPage.assessStep( step );
+      browser.pause( 500 );
+      NSGRAPage.confirmExportInformationText( step );
+      browser.pause( 500 );
     } );
-    } );
-
-    // TODO complete test for assess
-
-
-
   } );
 } );

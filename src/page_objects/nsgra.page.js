@@ -7,12 +7,12 @@ const NSGRAPaths = require( '../../data/nsgra/paths.json' );
 const NSGRAPage = Object.create( page, {
   // define functions
   open: {
-    value: function() {
+    value: () => {
       page.open.call( this, NSGRAPaths.appHome );
     }
   },
   assertURL: {
-    value: function() {
+    value: () => {
       const currentURL = browser.getUrl();
       assert(
         currentURL === NSGRAPaths.appHome,
@@ -22,23 +22,23 @@ const NSGRAPage = Object.create( page, {
     }
   },
   decide: {
-    value: function( type ) {
-      page.press.call( this, NSGRAElements[ type ].decide.selector )
+    value: () => {
+      page.press.call( this, NSGRAElements.decide.selector )
     }
   },
   assess: {
-    value: function( type ) {
-      page.press.call( this, NSGRAElements[ type ].assess.selector )
+    value: () => {
+      page.press.call( this, NSGRAElements.assess.selector )
     }
   },
-  openReport: {
-    value: function( step, report ) {
+  decideReport: {
+    value: ( step, report ) => {
       const parentElement = '//h2[text()="' + step + '"]/following-sibling::div/div/a[text()="' + report + '"]';
 
       page.press.call( this, parentElement );
     }
   },
-  openStep: {
+  assessStep: {
     value: function( step, report ) {
       const parentElement = '//h3/span[text()="' + step + '"]';
 
@@ -46,7 +46,7 @@ const NSGRAPage = Object.create( page, {
     }
   },
   confirmExportInformationText: {
-    value: function( userType, step, report ) {
+    value: ( step, report ) => {
       let exportInformationText;
 
       switch( step ) {
@@ -56,14 +56,15 @@ const NSGRAPage = Object.create( page, {
           }
           break;
         case 'Step 2':
-          exportInformationText =  [ 'A student\'s spelling stage is determined by identifying the column in which the student first makes two or more errors. That spelling feature is a starting point for future instruction.',
-  'If a student does not make two or more errors in any spelling feature column and has answered fewer than 30 questions, then a spelling stage will not be provided in the reports. Please consider extending the assessment.',
-  'Total words spelled incorrectly may not match the total number of spelling features missed.' ]
-;
+          exportInformationText =  [
+            'A student\'s spelling stage is determined by identifying the column in which the student first makes two or more errors. That spelling feature is a starting point for future instruction.',
+            'If a student does not make two or more errors in any spelling feature column and has answered fewer than 30 questions, then a spelling stage will not be provided in the reports. Please consider extending the assessment.',
+            'Total words spelled incorrectly may not match the total number of spelling features missed.'
+          ];
           break;
       }
 
-      page.assertTextInElement.call( this, NSGRAElements.student.assess.classProgressReport.reportDetail.exportInformationText.selector, exportInformationText );
+      page.assertTextInElement.call( this, NSGRAElements.assess.report.detail.information.selector, exportInformationText );
     }
   }
 } );
